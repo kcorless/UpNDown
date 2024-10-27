@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Game - Instructions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8">How to Play "The Game"</h1>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 space-y-6">
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Quick Start</h2>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Create an account or sign in</li>
+                    <li>Click "New Game" to start a game (you'll get a 4-character game ID)</li>
+                    <li>Share the game ID with friends who want to join</li>
+                    <li>Other players can join using the "Join Game" option</li>
+                    <li>The game begins when all players have joined</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Game Rules</h2>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2">Goal</h3>
+                        <p>Work together to play all cards from your hands onto the four piles. You win when all cards are played!</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold mb-2">Setup</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Two ascending piles (starting at 1)</li>
+                            <li>Two descending piles (starting at 100)</li>
+                            <li>Each player gets 6-8 cards (depends on player count)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold mb-2">On Your Turn</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Must play at least 2 cards</li>
+                            <li>Can play on any pile in the correct direction</li>
+                            <li>Ascending piles: Must play higher numbers</li>
+                            <li>Descending piles: Must play lower numbers</li>
+                            <li>Special Rule: Can play exactly 10 less on ascending or 10 more on descending</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2">Communication Features</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Use the chat to coordinate with other players</li>
+                            <li>When it's not your turn, you can mark piles with "Like" or "Love" to suggest moves</li>
+                            <li>Watch for other players' pile preferences to plan your strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Tips for Success</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>Communicate with your team - use the chat and pile preferences</li>
+                    <li>Plan ahead - watch what cards other players might have</li>
+                    <li>Use the "10 rule" strategically to keep piles accessible</li>
+                    <li>Don't rush - coordinate with your team before making moves</li>
+                </ul>
+            </section>
+
+            <div class="mt-8 flex justify-center">
+                <button onclick="window.location.href='/'" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                    Start Playing
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
