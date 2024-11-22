@@ -1,0 +1,39 @@
+graph TD
+    subgraph "Phase 0: Platform Setup"
+        MA[macos/prerequisites-check.sh] --> MB[macos/install-node.sh]
+        MB --> MC[macos/install-sqlite.sh]
+        MC --> MD[macos/environment-setup.sh]
+        MD --> ME[macos/verify-install.sh]
+        
+        WA[windows/prerequisites-check.ps1] --> WB[windows/install-node.ps1]
+        WB --> WC[windows/install-sqlite.ps1]
+        WC --> WD[windows/environment-setup.ps1]
+        WD --> WE[windows/verify-install.ps1]
+        
+        ME --> CP[platform-check.js]
+        WE --> CP
+        CP --> PP[cross-platform-paths.ts]
+        PP --> EV[env-validator.ts]
+    end
+
+    subgraph "Phase 1: Core Infrastructure"
+        EV --> A[database-schema.sql]
+        A --> B[database-init.ts]
+        B --> C[server.ts]
+        C --> D[config.ts]
+        D --> E[basic-error-handler.ts]
+        A --> F[types/shared-interfaces.ts]
+    end
+
+    %% [Previous phases 2-8 remain the same...]
+
+    %% Style Phase 0
+    classDef phase0mac fill:#ffebee,stroke:#c62828
+    classDef phase0win fill:#e8eaf6,stroke:#1a237e
+    classDef phase0common fill:#f3e5f5,stroke:#4a148c
+
+    class MA,MB,MC,MD,ME phase0mac
+    class WA,WB,WC,WD,WE phase0win
+    class CP,PP,EV phase0common
+
+    %% [Previous phase styling remains the same...]

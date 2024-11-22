@@ -1,0 +1,81 @@
+graph TD
+    subgraph "Phase 1: Core Infrastructure"
+        A[database-schema.sql] --> B[database-init.ts]
+        B --> C[server.ts]
+        C --> D[config.ts]
+        D --> E[basic-error-handler.ts]
+        A --> F[types/shared-interfaces.ts]
+    end
+
+    subgraph "Phase 2: Basic Game State"
+        G[game-state-manager.ts] --> H[data-access-layer]
+        F --> G
+        B --> H
+        H --> I[routes/game.ts]
+        I --> J[routes/player.ts]
+    end
+
+    subgraph "Phase 3: Minimal Playable Frontend"
+        K[App.tsx] --> L[GameBoard.tsx]
+        L --> M[PlayerHand.tsx]
+        L --> N[CardPile.tsx]
+        F --> O[gameContext.tsx]
+        O --> P[gameReducer.ts]
+        P --> L
+    end
+
+    subgraph "Phase 4: Real-time Communication"
+        Q[websocket-handler.ts] --> R[socketContext.tsx]
+        C --> Q
+        R --> L
+        Q --> S[game-state-sync.ts]
+    end
+
+    subgraph "Phase 5: Game Logic"
+        T[card-validator.ts] --> U[gameplay-manager.ts]
+        G --> U
+        U --> V[GameControls.tsx]
+        V --> L
+    end
+
+    subgraph "Phase 6: Session Management"
+        W[session-manager.ts] --> X[player-auth.ts]
+        X --> Y[routes/session.ts]
+    end
+
+    subgraph "Phase 7: Communication Features"
+        Z[ChatInterface.tsx] --> L
+        AA[PreferenceIndicator.tsx] --> L
+        BB[PlayerList.tsx] --> L
+        Q --> Z
+    end
+
+    subgraph "Phase 8: Testing & Monitoring"
+        CC[tests/unit] --> DD[tests/integration]
+        DD --> EE[tests/e2e]
+        FF[logger.ts] --> GG[metrics.ts]
+    end
+
+    %% Cross-phase dependencies
+    C --> G
+    G --> L
+    Q --> U
+    W --> L
+    
+    classDef phase1 fill:#e1f5fe,stroke:#01579b
+    classDef phase2 fill:#e8f5e9,stroke:#1b5e20
+    classDef phase3 fill:#fff3e0,stroke:#e65100
+    classDef phase4 fill:#f3e5f5,stroke:#4a148c
+    classDef phase5 fill:#fbe9e7,stroke:#bf360c
+    classDef phase6 fill:#e0f2f1,stroke:#004d40
+    classDef phase7 fill:#f9fbe7,stroke:#827717
+    classDef phase8 fill:#efebe9,stroke:#3e2723
+
+    class A,B,C,D,E,F phase1
+    class G,H,I,J phase2
+    class K,L,M,N,O,P phase3
+    class Q,R,S phase4
+    class T,U,V phase5
+    class W,X,Y phase6
+    class Z,AA,BB phase7
+    class CC,DD,EE,FF,GG phase8
