@@ -43,13 +43,14 @@ CREATE TABLE player_hands (
     game_id TEXT NOT NULL,
     user_id TEXT NOT NULL,
     card_value INTEGER NOT NULL,
-    card_id INTEGER NOT NULL,  -- Unique identifier for each physical card (1-100, duplicated for 2 decks)
+    card_id INTEGER NOT NULL,  -- In-game instance ID for a card, unique within this game. (e.g., if using two 1-100 card decks, this ID distinguishes identical values from different decks or instances)
     received_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
     PRIMARY KEY (game_id, user_id, card_id),
     FOREIGN KEY (game_id, user_id) REFERENCES game_players(game_id, user_id) ON DELETE CASCADE
 );
 
 -- Game_piles table - Tracks the state of the four piles
+-- Future consideration: pile_type is derivable from pile_index (0,1 ascending; 2,3 descending). Could be removed to reduce redundancy if logic is handled application-side.
 CREATE TABLE game_piles (
     game_id TEXT NOT NULL,
     pile_index INTEGER NOT NULL CHECK (pile_index IN (0,1,2,3)),  -- 0,1 ascending, 2,3 descending
@@ -65,7 +66,7 @@ CREATE TABLE pile_cards (
     pile_index INTEGER NOT NULL,
     card_value INTEGER NOT NULL,
     card_id INTEGER NOT NULL,
-    played_by TEXT NOT NULL,
+    played_by TEXT NOT NULL, -- Future consideration: played_by could reference game_players(game_id, user_id) via a composite foreign key for stricter integrity, ensuring the player is part of this specific game.
     played_at INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
     play_order INTEGER NOT NULL,  -- Tracks order of cards in pile
     PRIMARY KEY (game_id, pile_index, card_id),
@@ -108,9 +109,10 @@ CREATE TABLE chat_messages (
 
 -- Create indexes for common queries
 CREATE INDEX idx_games_status ON games(status);
+CREATE INDEX idx_games_last_updated ON games(last_updated_at);
 CREATE INDEX idx_game_players_connection ON game_players(game_id, is_connected);
 CREATE INDEX idx_chat_messages_game ON chat_messages(game_id, sent_at);
-CREATE INDEX idx_player_hands_game ON player_hands(game_id, user_id);
+-- CREATE INDEX idx_player_hands_game ON player_hands(game_id, user_id); -- Removed as it's redundant with the PK
 CREATE INDEX idx_pile_cards_game ON pile_cards(game_id, pile_index, play_order);
 CREATE INDEX idx_draw_pile_game ON draw_pile(game_id, position);
 
