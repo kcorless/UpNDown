@@ -1,0 +1,64 @@
+.how-to {
+   padding: 1rem;
+   max-width: 600px;
+   width: 100%;
+}
+
+.how-to h2 {
+   margin-bottom: 1rem;
+   color: #333;
+   text-align: center;
+   font-size: 1.8rem;
+}
+
+.how-to-section {
+   margin-bottom: 1.25rem;
+}
+
+.how-to-section h3 {
+   color: #444;
+   font-size: 1.3rem;
+   margin-bottom: 0.6rem;
+   border-bottom: 2px solid #eee;
+   padding-bottom: 0.25rem;
+}
+
+.how-to-section p {
+   color: #555;
+   line-height: 1.4;
+   margin-bottom: 0.5rem;
+}
+
+.how-to-section ul {
+   list-style-type: none;
+   padding-left: 0.5rem;
+}
+
+.how-to-section ul ul {
+   padding-left: 1.5rem;
+   margin-top: 0.25rem;
+}
+
+.how-to-section li {
+   color: #555;
+   margin-bottom: 0.4rem;
+   line-height: 1.4;
+   position: relative;
+}
+
+.how-to-section li:before {
+   content: "•";
+   color: #4a90e2;
+   position: absolute;
+   left: -1rem;
+}
+
+.how-to-section ul ul li:before {
+   content: "◦";
+}
+
+@media (max-width: 480px) {
+   .how-to {
+       padding: 0.5rem;
+   }
+}

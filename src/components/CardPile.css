@@ -1,0 +1,157 @@
+.card-pile {
+  position: relative;
+  width: 81px;  /* 125% of card width */
+  height: 120px; /* 125% of card height */
+  border-radius: 15px;
+  padding: 8px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-pile.up {
+  background-color: rgb(200, 240, 200);
+}
+
+.card-pile.down {
+  background-color: rgb(255, 200, 200);
+}
+
+/* Simplified arrow styles */
+.arrow {
+  position: absolute;
+  font-size: 18px;
+  color: black;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%; /* Width of border area */
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+/* Adjust inset-area to not overlap with arrows */
+.inset-area {
+  position: relative;
+  width: 58px;      /* 200px of 250px */
+  height: 88px;     /* Maintain same ratio */
+  background: linear-gradient(to bottom right, #d0d4d8, #a8b0b8);
+  border: 1px solid #000;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-card {
+  font-size: 24px;
+  font-weight: normal;
+  color: white;
+  text-align: center;
+}
+
+.foundation-piles {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;  /* Reduced from 2rem */
+  padding: 1rem; /* Reduced from 2rem */
+  margin-bottom: 4px;
+  width: 100%;
+  min-width: fit-content;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.pile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.heart-icons {
+  display: flex;
+  gap: 8px; /* Final decided value */
+  height: 16px; /* Final decided value */
+  line-height: 1;
+}
+
+.heart-icon {
+  font-size: 14px; /* General size */
+  width: 16px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transform: scale(1); /* Default state */
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.heart-icon:hover {
+  transform: scale(1.2); /* Enlarge slightly on hover */
+}
+
+.heart-icon.none {
+  opacity: 0.4; /* Slightly visible */
+  font-size: 10px; /* Smaller than other icons */
+  color: #666;
+}
+
+.heart-icon.like {
+  color: #ff4444;
+  opacity: 0.6;
+}
+
+.heart-icon.reallyLike {
+  color: #ff4444;
+  opacity: 0.8;
+}
+
+.heart-icon.love {
+  color: #FFD700; /* Gold color */
+  font-size: 22px; /* Larger size for emphasis */
+  width: 22px; /* Ensure the width matches the size */
+  height: 22px; /* Ensure the height matches the size */
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .card-pile {
+    width: 70px;  /* Slightly smaller than current 81px */
+    height: 104px; /* Maintain aspect ratio */
+    margin: 0 10px; /* Reduced from 20px */
+  }
+
+  .inset-area {
+    width: 50px;  /* Adjusted proportionally */
+    height: 76px;
+  }
+
+  .top-card {
+    font-size: 20px; /* Slightly smaller font */
+  }
+
+  .arrow {
+    font-size: 16px; /* Slightly smaller arrows */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .foundation-piles {
+    gap: 0.5rem;  /* Even smaller gap */
+    padding: 0.5rem;
+  }
+
+  .card-pile {
+    margin: 0 5px;  /* Minimal margin */
+  }
+}

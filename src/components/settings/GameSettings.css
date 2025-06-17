@@ -1,0 +1,150 @@
+.game-settings {
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.game-settings h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.settings-section {
+    margin-bottom: 1.5rem;
+}
+
+.settings-section h3 {
+    color: #444;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.settings-row {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.settings-row label {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.settings-row label span {
+    font-size: 1rem;
+    color: #333;
+}
+
+.settings-row .default-text {
+    position: absolute;
+    bottom: -1.2rem;
+    left: 0;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.settings-row input[type="number"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: right;
+    background-color: #fff;
+}
+
+.settings-row input[type="number"]:disabled {
+    background-color: #f5f5f5;
+    color: #666;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Game Behavior section */
+.game-behavior {
+    margin-top: 1.5rem;
+}
+
+.game-behavior label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 1.2rem;
+    min-height: 1.5rem;  /* Ensure consistent height even when disabled */
+}
+
+.game-behavior input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+    cursor: pointer;
+}
+
+.game-behavior input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.game-behavior input[type="checkbox"]:disabled + span {
+    color: #666;
+}
+
+.game-behavior .default-text {
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.save-button {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    float: right;
+}
+
+.save-button:hover {
+    background-color: #357ABD;
+}
+
+/* Close button */
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Error message styling */
+.settings-error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}

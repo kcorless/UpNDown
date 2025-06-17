@@ -1,0 +1,51 @@
+.deck-counter {
+  font-size: 0.9em;
+  color: #666;
+  padding: 0.5rem;
+}
+
+.deck-counter-icon {
+  position: relative;
+  width: 60px;
+  height: 84px;
+}
+
+.deck-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.deck-counter-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.deck-counter-number {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.deck-counter-label {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* Add a subtle animation when the count changes */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.deck-counter-number {
+  animation: pulse 0.3s ease-in-out;
+}

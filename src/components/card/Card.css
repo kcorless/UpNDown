@@ -1,0 +1,54 @@
+.card {
+  width: 200px;
+  height: 280px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  background: white;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  touch-action: none;  /* Prevents default touch behaviors */
+  user-select: none;   /* Prevents text selection while dragging */
+  -webkit-user-select: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* When the card is in a pile, it should match the pile's style */
+.up .card {
+  border-color: #4CAF50;
+  background-color: #ffffff;
+}
+
+.down .card {
+  border-color: #f44336;
+  background-color: #ffffff;
+}
+
+.card.dragging {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.card.selected {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #4a90e2;
+  background-color: #f0f8ff;  /* Light blue background when selected */
+  transition: all 0.2s ease;
+}

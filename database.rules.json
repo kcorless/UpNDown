@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "lobbies": {
+      ".read": true,
+      ".write": false,
+      "$lobbyId": {
+        ".read": true,
+        ".write": "!data.exists() || data.exists()",
+        ".validate": "newData.hasChildren(['id', 'hostId', 'players', 'status', 'createdAt'])",
+        "players": {
+          ".read": true,
+          ".write": true,
+          "$playerId": {
+            ".validate": "newData.hasChildren(['id', 'name', 'isReady', 'joinedAt'])"
+          }
+        },
+        "status": {
+          ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'"
+        }
+      }
+    }
+  }
+}
